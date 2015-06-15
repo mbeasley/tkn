@@ -7,7 +7,7 @@ require 'io/console'
 require 'active_support/core_ext/string/strip'
 require 'pygments'
 
-TRANSITIONS_TIME = 0.3
+TRANSITIONS_TIME = 0.0
 MAX_CHAR_DELAY   = 0.002
 
 #
