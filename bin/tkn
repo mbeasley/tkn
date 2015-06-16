@@ -6,6 +6,7 @@ Encoding.default_internal = "UTF-8"
 require 'io/console'
 require 'active_support/core_ext/string/strip'
 require 'pygments'
+require 'colorize'
 
 TRANSITIONS_TIME = 0.0
 MAX_CHAR_DELAY   = 0.002
@@ -74,7 +75,25 @@ def b(str)
   "\e[1m#{str}\e[0m"
 end
 
+def title(str)
+  str.bold.cyan
+end
 
+def subtitle(str)
+  str.light_black
+end
+
+def snippet(str)
+  "`#{str.white.bold}`"
+end
+
+def snippet_block(str, lang = :ruby)
+  render_block(Pygments.highlight(str, formatter: 'terminal', lexer: lang, options: {style: 'manni'}))
+end
+
+def constant(str)
+  "#{str.yellow.bold}"
+end
 #
 # --- Utilities -------------------------------------------------------
 #
@@ -163,7 +182,7 @@ end
 
 # Renders source code.
 def render_code(code, lexer)
-  render_block(Pygments.highlight(code, formatter: 'terminal256', lexer: lexer, options: {style: 'bw'}) + "\n")
+  render_block(Pygments.highlight(code, formatter: 'terminal', lexer: lexer, options: {style: 'manni'}) + "\n")
 end
 
 # Centers the whole content as a block. That is, the format within the content
