@@ -303,8 +303,8 @@ if print
 
   $slides.each_with_index do |slide, i|
     out = render slide
-    puts out.gsub(/\x1b\[[0-9;]*\w/, "")
-    puts "\n\n----------------------- Slide #{i} ---\n\n\n"
+    puts "   " + out.gsub(/\x1b\[[0-9;]*\w/, "").gsub("\n", "\n   ")
+    puts "\n\n\n========== ^ Slide #{i + 1} ^ ========== \n\n\n\n"
   end
 else
   loop do
