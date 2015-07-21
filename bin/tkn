@@ -121,7 +121,7 @@ end
 # Returns the number of rows and columns of the terminal as an array of two
 # integers [rows, cols].
 def winsize
-  $stdout.winsize
+  $stdout.winsize rescue [1000, 1000]
 end
 
 # Sets an image as terminal background, assumes the presentation run in iTerm2.
