@@ -332,6 +332,8 @@ else
         print c
         sleep pause # old-school touch: running cursor
       end
+
+      puts cursor_at(*winsize)
     end
 
     case read_command
